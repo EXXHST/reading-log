@@ -1,0 +1,139 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.filterSelect {
+  flex: 1;
+  min-width: 150px;
+  padding: 10px;
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  background-color: var(--warm-white);
+  color: var(--warm-brown);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.filterSelect:focus {
+  outline: none;
+  border-color: var(--sage-green);
+  box-shadow: 0 0 0 2px rgba(139, 157, 131, 0.1);
+}
+
+.tableWrapper {
+  background: var(--warm-white);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.tableRow {
+  border-bottom: 1px solid var(--card-border);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.tableRow:hover {
+  background: var(--stat-bg);
+}
+
+.tableRow:last-child {
+  border-bottom: none;
+}
+
+.tableRow td {
+  padding: 0.75rem;
+}
+
+.titleCell {
+  font-weight: 500;
+  color: var(--warm-brown);
+  min-width: 200px;
+}
+
+.authorCell {
+  color: var(--secondary-text);
+  min-width: 150px;
+}
+
+.ratingCell {
+  text-align: center;
+  min-width: 60px;
+}
+
+.badge {
+  display: inline-block;
+  color: var(--light-text);
+  font-size: 12px;
+  padding: 0;
+  font-weight: 500;
+}
+
+.typeCell {
+  color: var(--light-text);
+  min-width: 120px;
+}
+
+.statusCell {
+  text-align: center;
+  min-width: 120px;
+}
+
+.dateCell {
+  text-align: right;
+  color: var(--light-text);
+  min-width: 120px;
+  white-space: nowrap;
+}
+
+.reading {
+  color: var(--sage-green);
+  font-weight: 600;
+}
+
+.want {
+  color: var(--accent-light);
+}
+
+.empty {
+  text-align: center;
+  color: var(--light-text);
+  padding: 2rem;
+  font-style: italic;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 1rem 1rem;
+  }
+
+  .filters {
+    flex-direction: column;
+  }
+
+  .filterSelect {
+    min-width: auto;
+  }
+
+  .titleCell,
+  .authorCell,
+  .typeCell,
+  .dateCell {
+    min-width: auto;
+  }
+}

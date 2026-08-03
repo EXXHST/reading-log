@@ -1,0 +1,15 @@
+.themeToggle {
+  background: transparent;
+  border: 1px solid var(--card-border);
+  color: var(--warm-brown);
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s;
+}
+
+.themeToggle:hover {
+  border-color: var(--warm-brown);
+  background: var(--stat-bg);
+}
