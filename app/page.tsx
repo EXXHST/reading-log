@@ -41,7 +41,7 @@ export default function Dashboard() {
         const allQuotes: { quote: string; author: string; title: string }[] = []
         allBooks.forEach((book) => {
           if (book.quotes && Array.isArray(book.quotes)) {
-            book.quotes.forEach((q) => {
+            book.quotes.forEach((q: string) => {
               allQuotes.push({
                 quote: q,
                 author: book.author,

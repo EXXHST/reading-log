@@ -186,18 +186,19 @@ function MultiYearMonthlyChart({ books, currentYear }: { books: Book[]; currentY
   const data = months.map((name, index) => {
     const obj: any = { month: name }
     years.forEach((year) => {
-      // For the current year, only include data up to current month
-      if (year === currentYear && index > currentMonth) {
-        return // Skip this month for current year
-      }
       let cumulative = 0
       for (let m = 0; m <= index; m++) {
         cumulative += monthlyData[year]?.[m] || 0
       }
-      obj[`year-${year}`] = cumulative
+      // For current year, only include data up to current month
+      if (year === currentYear && index > currentMonth) {
+        // Don't set the value for future months in current year
+      } else {
+        obj[`year-${year}`] = cumulative
+      }
     })
     return obj
-  }).slice(0, currentMonth + 1) // Only include months up to current month
+  })
 
   const colors = ['var(--sage-green)', 'var(--warm-brown)', 'var(--accent-light)']
 

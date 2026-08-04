@@ -41,9 +41,31 @@ export default function Catalogue() {
         switch (sortBy) {
           case 'recently-completed':
             sorted.sort((a, b) => {
-              if (!a.date_finished) return 1
-              if (!b.date_finished) return -1
-              return new Date(b.date_finished).getTime() - new Date(a.date_finished).getTime()
+              // Define status priority: reading (top), finished, want, abandoned (bottom)
+              const statusPriority: { [key: string]: number } = {
+                reading: 0,
+                finished: 1,
+                want: 2,
+                abandoned: 3,
+              }
+
+              const aPriority = statusPriority[a.status] ?? 4
+              const bPriority = statusPriority[b.status] ?? 4
+
+              // If different status, sort by priority
+              if (aPriority !== bPriority) {
+                return aPriority - bPriority
+              }
+
+              // Same status: for finished books, sort by date (most recent first)
+              if (a.status === 'finished') {
+                if (!a.date_finished) return 1
+                if (!b.date_finished) return -1
+                return new Date(b.date_finished).getTime() - new Date(a.date_finished).getTime()
+              }
+
+              // For other statuses, keep original order
+              return 0
             })
             break
           case 'title':
