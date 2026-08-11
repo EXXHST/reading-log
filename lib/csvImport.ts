@@ -1,3 +1,4 @@
+// @ts-ignore
 import Papa from 'papaparse'
 import { supabase } from './supabase'
 
